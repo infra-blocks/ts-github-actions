@@ -1,24 +1,36 @@
-# ts-lib-template
+# ts-github-actions
 
-This repository is a template to generate repositories meant to hold the source code
-of NPM packages written in TypeScript.
+This package provides a set of utilities to improve developer UX while writing GitHub Actions in Typescript.
 
-Follow these steps after instantiating the template:
-- Remove the [trigger update from template workflow](.github/workflows/trigger-update-from-template.yml)
-- Update the .nvmrc version file to latest
-- Update the package.json
-  - Rename the package name and links
-  - Update the `engines` section
-- Update the dependencies
-- Run `nvm install`
-- Run `npm install`
-- Run `npm run compile && npm run lint && npm run test`
-- Edit the `.npmrc` file if you wish to change the defaults. Specifically, if you wish to make your package private.
-- Rename the header of this document to match the repository
-- Replace this section of this document to include a description of the new package
-- Configure code coverage
-- Add the publication labels on the new repository: `patch`, `minor`, `major`, `no version`.
-- Add branch protection rules
+## Usage
+
+The entrypoint to a GitHub Action should look like this:
+
+```typescript
+import { getInputs, runActionHandler } from "@infra-blocks/github-actions";
+// You are free to use your favorite validation library. We like zod.
+import { z } from "zod";
+
+interface Outputs {
+  "example-output": string;
+}
+
+async function handler(config: {exampleInput: string; bigInput: number}): Promise<Outputs> {
+  // The business goes here.
+}
+
+runActionHandler(() => {
+  const inputs = getInputs("example-input", "bigInput");
+  const config = z.object({
+    "example-input": z.string(),
+    bigInput: z.number()
+  }).transform((parsed) => ({
+    exampleInput: parsed["example-input"],
+    bigInput: parse.bigInput
+  })).parse(inputs);
+  return handler(config);
+});
+```
 
 ## Development
 
