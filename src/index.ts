@@ -14,12 +14,19 @@ export type Input = string | undefined;
 /**
  * Returns the value of the input, as found in the environment.
  *
- * This function was copied over from @actions/core, with a small twist.
+ * This function parses the environment the same as core.getInput(). However, core.getInput()
+ * returns an empty string when the environment variable isn't defined. The GitHub Actions engine does the
+ * same when no value is provided.
+ *
+ * This function uses a different approach. It returns undefined if the input is not set in the environment,
+ * *or if the environment variable is an empty string*. This can make it easier to set default values
+ * using validation frameworks.
  *
  * @param name - The input name.
  */
 export function getInput(name: string): Input {
-  return process.env[`INPUT_${name.replace(/ /g, "_").toUpperCase()}`];
+  const value = process.env[`INPUT_${name.replace(/ /g, "_").toUpperCase()}`];
+  return value === "" ? undefined : value;
 }
 
 /**
