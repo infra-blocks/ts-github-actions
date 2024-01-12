@@ -1,13 +1,42 @@
 import * as core from "@actions/core";
 import { awaiter, expect, resetEnvFixture } from "@infra-blocks/test";
 import { withFile } from "tmp-promise";
-import { getInputs, parseOutputs, runActionHandler } from "../../src/index.js";
+import {
+  getInput,
+  getInputs,
+  parseOutputs,
+  runActionHandler,
+} from "../../src/index.js";
 import sinon from "sinon";
 
 describe("index", function () {
   function setInput(name: string, value: string) {
     process.env[`INPUT_${name.replace(/ /g, "_").toUpperCase()}`] = value;
   }
+
+  describe(getInput.name, function () {
+    afterEach("reset process.env", resetEnvFixture());
+
+    it("should work with a word input", function () {
+      setInput("input", "value");
+      expect(getInput("input")).to.equal("value");
+    });
+    it("should work with a hyphenated input", function () {
+      setInput("hyphenated-input", "hyphen");
+      expect(getInput("hyphenated-input")).to.equal("hyphen");
+    });
+    it("should work with a camel case input", function () {
+      setInput("camelCaseInput", "camel");
+      expect(getInput("camelCaseInput")).to.equal("camel");
+    });
+    it("should return undefined if the input is missing", function () {
+      expect(getInput("missing")).to.be.undefined;
+    });
+    it("should return undefined if the input is an empty string", function () {
+      setInput("empty-input", "");
+      expect(getInput("empty-input")).to.be.undefined;
+    });
+  });
 
   describe(getInputs.name, function () {
     afterEach("reset process.env", resetEnvFixture());
