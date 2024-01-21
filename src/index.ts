@@ -1,4 +1,5 @@
 import * as core from "@actions/core";
+import { context } from "@actions/github";
 import { readFile } from "node:fs/promises";
 import VError from "verror";
 
