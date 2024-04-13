@@ -1,6 +1,11 @@
 {
   "name": "@infra-blocks/github-actions",
   "version": "0.3.2",
+  "keywords": [
+    "github",
+    "actions",
+    "github actions"
+  ],
   "homepage": "https://github.com/infrastructure-blocks/ts-github-actions#readme",
   "bugs": {
     "url": "https://github.com/infrastructure-blocks/ts-github-actions/issues"
