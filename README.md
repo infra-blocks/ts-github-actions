@@ -1,6 +1,6 @@
 # ts-github-actions
 [![Build](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/build.yml/badge.svg)](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/build.yml)
-[![NPM Publish Release From Label](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/npm-publish-release-from-label.yml/badge.svg)](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/npm-publish-release-from-label.yml)
+[![Release](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/release.yml/badge.svg)](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/release.yml)
 [![Update From Template](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/update-from-template.yml/badge.svg)](https://github.com/infrastructure-blocks/ts-github-actions/actions/workflows/update-from-template.yml)
 [![codecov](https://codecov.io/gh/infrastructure-blocks/ts-github-actions/graph/badge.svg?token=EATDOV78XS)](https://codecov.io/gh/infrastructure-blocks/ts-github-actions)
 
