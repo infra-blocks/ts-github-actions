@@ -6,13 +6,13 @@
     "actions",
     "github actions"
   ],
-  "homepage": "https://github.com/infrastructure-blocks/ts-github-actions#readme",
+  "homepage": "https://github.com/infra-blocks/ts-github-actions#readme",
   "bugs": {
-    "url": "https://github.com/infrastructure-blocks/ts-github-actions/issues"
+    "url": "https://github.com/infra-blocks/ts-github-actions/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/infrastructure-blocks/ts-github-actions.git"
+    "url": "git+https://github.com/infra-blocks/ts-github-actions.git"
   },
   "license": "ISC",
   "author": "",
